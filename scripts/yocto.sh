@@ -1,3 +1,8 @@
 #!/bin/bash
+
 set -e
-case "$1" in build) echo build ;; clean) echo clean ;; package) echo package ;; sbom) echo sbom ;; *) echo usage; exit 1;; esac
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+ROOT_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
+
+python3 "${ROOT_DIR}/build/build_controller.py" "$@"
